@@ -384,63 +384,6 @@ function BookingContent() {
         )}
       </div>
 
-      {/* Pricing Summary Sidebar */}
-      <div className="lg:col-span-5">
-        <div className="bg-white p-6 sm:p-8 rounded-3xl shadow-luxury border border-sage/40 sticky top-28 space-y-6">
-          <h2 className="font-serif text-2xl font-bold text-forest border-b border-sage/20 pb-4">
-            Reservation Summary
-          </h2>
-
-          {selectedRoom && (
-            <div className="flex items-center gap-4">
-              <div className="relative w-16 h-16 rounded-2xl overflow-hidden shrink-0">
-                <Image src={selectedRoom.coverImage} alt={selectedRoom.name} fill className="object-cover" />
-              </div>
-              <div>
-                <p className="font-serif text-lg font-bold text-forest">{selectedRoom.name}</p>
-                <p className="text-xs text-forest/70">₹{(selectedRoom.slug === 'entire-farmhouse' ? 21000 : 7000).toLocaleString('en-IN')} per night · {checkIn} to {checkOut} ({pricing?.nights || 1} nights)</p>
-              </div>
-            </div>
-          )}
-
-          {availabilityCheck?.available === false && (
-            <div className="bg-terracotta/10 border border-terracotta/30 text-terracotta p-3.5 rounded-2xl text-xs font-semibold">
-              ⚠️ {availabilityCheck.reason}
-            </div>
-          )}
-
-          {pricing && (
-            <div className="space-y-3 pt-2 text-xs font-light text-forest/80 border-t border-sage/20">
-              <div className="flex justify-between">
-                <span>Room Subtotal ({pricing.nights} nights)</span>
-                <span className="font-medium text-forest">₹{pricing.roomSubtotal?.toLocaleString('en-IN')}</span>
-              </div>
-
-              {pricing.experiencesTotal > 0 && (
-                <div className="flex justify-between">
-                  <span>Selected Experiences Add-Ons</span>
-                  <span className="font-medium text-forest">₹{pricing.experiencesTotal?.toLocaleString('en-IN')}</span>
-                </div>
-              )}
-
-              <div className="flex justify-between">
-                <span>Cleaning & Service Fee</span>
-                <span className="font-medium text-forest">₹{pricing.cleaningFee?.toLocaleString('en-IN')}</span>
-              </div>
-
-              <div className="flex justify-between">
-                <span>Taxes & GST (12%)</span>
-                <span className="font-medium text-forest">₹{pricing.taxes?.toLocaleString('en-IN')}</span>
-              </div>
-
-              <div className="flex justify-between text-base font-bold text-forest pt-3 border-t border-sage/30">
-                <span>Total Amount</span>
-                <span className="font-serif text-xl text-olive">₹{pricing.totalAmount?.toLocaleString('en-IN')}</span>
-              </div>
-            </div>
-          )}
-        </div>
-      </div>
     </div>
   );
 }
